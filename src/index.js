@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
 import "./styles.css";
-
+// useState = 동적인 값
+// validator는 검증기능을 가지고 있다. 10보다 작은 글자수
 const useInput = (initialValue, validator) => {
   const [value, setValue] = useState(initialValue);
+  // value와 setValue를 initialValue로 초기화값 지정
+  // initalValue는 첫번째 전달된 인자
   const onChange = (event) => {
     const {
       target: { value }
@@ -21,7 +24,8 @@ const useInput = (initialValue, validator) => {
 };
 
 const App = () => {
-  const maxLen = (value) => value.length < 10;
+  const maxLen = (value) => value.includes("@");
+  // includes = @를 포함하고 있으면 true 반환
   const name = useInput("Mr.", maxLen);
   return (
     <div className="App">
